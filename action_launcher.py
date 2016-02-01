@@ -17,17 +17,17 @@ TOKEN =  token.token_id
 bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 #############################################
 #Listener
-def listener(messages): # Con esto, estamos definiendo una función llamada 'listener', que recibe como parámetro un dato llamado 'messages'.
-    for m in messages: # Por cada dato 'm' en el dato 'messages'
-        cid = m.chat.id # Almacenaremos el ID de la conversación.
+def listener(messages): # Listener Function
+    for m in messages: # 
+        cid = m.chat.id # 
         if m.content_type == 'text':
-            print "[" + str(cid) + "]: " + m.text # Y haremos que imprima algo parecido a esto -> [52033876]: /start
+            print "[" + str(cid) + "]: " + m.text # 
  
-bot.set_update_listener(listener) # Así, le decimos al bot que utilice como función escuchadora nuestra función 'listener' declarada arriba) 
+bot.set_update_listener(listener) #  
 #############################################
 #Funciones
 @bot.message_handler(commands=['temp']) 
-def command_kick(m): 
+def command_temp(m): 
     temp = commands.getoutput('sudo /opt/vc/bin/vcgencmd/ measure_temp')
     cid = m.chat.id 
     bot.send_photo( cid, temp)
