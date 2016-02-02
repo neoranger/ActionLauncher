@@ -3,6 +3,7 @@
 ## Code wrote by Zagur of PortalLinux.es and modified for NeoRanger of neositelinux.com.ar
 ## For a good use of the bot please read the README file
  
+
 import telebot 
 from telebot import types 
 import time 
@@ -10,7 +11,7 @@ import random
 import datetime
 import token
 import os
-from subprocess import commands
+import subprocess
  
 TOKEN =  token.token_id
  
