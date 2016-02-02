@@ -8,21 +8,20 @@ from telebot import types
 import time 
 import random
 import datetime
-import os
-import commands
 import token
+import os
+from subprocess import commands
  
 TOKEN =  token.token_id
  
 bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 #############################################
 #Listener
-def listener(messages): # Listener Function
-    for m in messages: # 
-        cid = m.chat.id # 
-        if m.content_type == 'text':
-            print "[" + str(cid) + "]: " + m.text # 
- 
+def listener(messages):
+	for m in messages: 
+		cid = m.chat.id 
+		if m.content_type == 'text':
+			print ( "[" + str(cid) + "]: " + m.text )
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
@@ -32,6 +31,11 @@ def command_temp(m):
     cid = m.chat.id 
     bot.send_photo( cid, temp)
 
+@bot.message_handler(commands=['actualizar']) 
+def command_update(m): 
+    update = commands.getoutput('sudo pacman -Syu')
+    cid = m.chat.id 
+    bot.send_photo( cid, update)
 
  
 #############################################
