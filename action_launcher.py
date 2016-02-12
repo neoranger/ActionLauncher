@@ -29,7 +29,7 @@ bot.set_update_listener(listener) #
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m): 
     cid = m.chat.id 
-    bot.send_message( cid, "Comandos Disponibles: /help /temp /libre /pwd /espacio /tiempo /info /who")
+    bot.send_message( cid, "Comandos Disponibles: /help /temp /libre /pwd /espacio /tiempo /info /who /apagar /reiniciar")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
@@ -67,11 +67,28 @@ def command_libre(m):
     cid = m.chat.id 
     bot.send_message( cid, screenfetch) 
 
-@bot.message_handler(commands=['who']) 
-def command_libre(m): 
-    who = commands.getoutput('who')
+#@bot.message_handler(commands=['who']) 
+#def command_libre(m): 
+#    who = commands.getoutput('who')
+#    cid = m.chat.id 
+#    bot.send_message( cid, who) 
+    
+#@bot.message_handler(commands=['apagar']) 
+#def command_apagar(m): 
+#    apagar = commands.getoutput('poweroff')
+#    cid = m.chat.id 
+#    bot.send_message( cid, apagar) 
+    
+#@bot.message_handler(commands=['reiniciar']) 
+#def command_reboot(m): 
+#    reiniciar = commands.getoutput('reboot')
+#    cid = m.chat.id 
+#    bot.send_message( cid, reiniciar)
+
+@bot.message_handler(commands=['id']) 
+def command_id(m): 
     cid = m.chat.id 
-    bot.send_message( cid, who) 
+    bot.send_message( cid, cid )
  
 #############################################
 #Peticiones
