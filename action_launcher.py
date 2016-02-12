@@ -1,8 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
-## Action Launcher Bot: This is a bot how can shoots differents action depends commands
-## Code wrote by Zagur of PortalLinux.es and modified for NeoRanger of neositelinux.com.ar
-## For a good use of the bot please read the README file
- 
+# Action Launcher Bot: This is a bot how can shoots differents action depends commands
+# Code wrote by Zagur of PortalLinux.es and modified for NeoRanger of neositelinux.com.ar
+# For a good use of the bot please read the README file
 
 import telebot 
 from telebot import types 
@@ -12,6 +11,7 @@ import datetime
 import token
 import os
 import subprocess
+import commands
  
 TOKEN =  token.token_id
  
@@ -22,22 +22,56 @@ def listener(messages):
 	for m in messages: 
 		cid = m.chat.id 
 		if m.content_type == 'text':
-			print ( "[" + str(cid) + "]: " + m.text )
+			print ("[" + str(cid) + "]: " + m.text)
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
+@bot.message_handler(commands=['help']) 
+def command_ayuda(m): 
+    cid = m.chat.id 
+    bot.send_message( cid, "Comandos Disponibles: /help /temp /libre /pwd /espacio /tiempo /info /who")
+
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
     temp = commands.getoutput('sudo /opt/vc/bin/vcgencmd/ measure_temp')
     cid = m.chat.id 
-    bot.send_photo( cid, temp)
+    bot.send_message( cid, temp)
 
-@bot.message_handler(commands=['actualizar']) 
-def command_update(m): 
-    update = commands.getoutput('sudo pacman -Syu')
+@bot.message_handler(commands=['pwd']) 
+def command_pwd(m): 
+    pwd = commands.getoutput('pwd')
     cid = m.chat.id 
-    bot.send_photo( cid, update)
+    bot.send_message( cid, pwd)
+    
+@bot.message_handler(commands=['espacio']) 
+def command_espacio(m): 
+    info = commands.getoutput('df -h')
+    cid = m.chat.id 
+    bot.send_message( cid, info)
+    
+@bot.message_handler(commands=['tiempo']) 
+def command_tiempo(m): 
+    tiempo = commands.getoutput('uptime')
+    cid = m.chat.id 
+    bot.send_message( cid, tiempo)
+    
+@bot.message_handler(commands=['libre']) 
+def command_libre(m): 
+    libre = commands.getoutput('free -m')
+    cid = m.chat.id 
+    bot.send_message( cid, libre)
+ 
+@bot.message_handler(commands=['info']) 
+def command_libre(m): 
+    screenfetch = commands.getoutput('screenfetch -n')
+    cid = m.chat.id 
+    bot.send_message( cid, screenfetch) 
 
+@bot.message_handler(commands=['who']) 
+def command_libre(m): 
+    who = commands.getoutput('who')
+    cid = m.chat.id 
+    bot.send_message( cid, who) 
  
 #############################################
 #Peticiones
