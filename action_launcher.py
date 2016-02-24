@@ -19,17 +19,17 @@ TOKEN =  token.token_id
 bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
 #############################################
 #Listener
+usuario = False
 def listener(messages):
-	global cid
 	for m in messages: 
 		cid = m.chat.id 
+		usuario = cid == user.user_id
 		if m.content_type == 'text':
 			print ("[" + str(cid) + "]: " + m.text)
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
-
-if  cid == user_id :
+if  usuario:
 	@bot.message_handler(commands=['help']) 
 	def command_ayuda(m): 
 		cid = m.chat.id 
@@ -83,10 +83,11 @@ if  cid == user_id :
 	#    cid = m.chat.id 
 	#    bot.send_message( cid, reiniciar)
 	
-	@bot.message_handler(commands=['id']) 
-	def command_id(m): 
-		cid = m.chat.id 
-		bot.send_message(cid, cid)
+@bot.message_handler(commands=['id']) 
+def command_id(m): 
+	cid = m.chat.id 
+	bot.send_message(cid, cid)
+		
 		
 
 #############################################
