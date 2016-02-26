@@ -29,11 +29,12 @@ def listener(messages):
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
-if  usuario:
+
+if usuario:
 	@bot.message_handler(commands=['help']) 
 	def command_ayuda(m): 
 		cid = m.chat.id 
-		bot.send_message( cid, "Comandos Disponibles: /help /temp /libre /pwd /espacio /tiempo /info /who /apagar /reiniciar")
+		bot.send_message( cid, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
 	
 	@bot.message_handler(commands=['temp']) 
 	def command_temp(m): 
@@ -41,19 +42,19 @@ if  usuario:
 		cid = m.chat.id 
 		bot.send_message( cid, temp)
 	
-	@bot.message_handler(commands=['espacio']) 
+	@bot.message_handler(commands=['df']) 
 	def command_espacio(m): 
 		info = commands.getoutput('df -h')
 		cid = m.chat.id 
 		bot.send_message( cid, info)
 	
-	@bot.message_handler(commands=['tiempo']) 
+	@bot.message_handler(commands=['uptime']) 
 	def command_tiempo(m): 
 		tiempo = commands.getoutput('uptime')
 		cid = m.chat.id 
 		bot.send_message( cid, tiempo)
 	
-	@bot.message_handler(commands=['libre']) 
+	@bot.message_handler(commands=['free']) 
 	def command_libre(m): 
 		libre = commands.getoutput('free -m')
 		cid = m.chat.id 
@@ -65,19 +66,19 @@ if  usuario:
 		cid = m.chat.id 
 		bot.send_message( cid, screenfetch) 
 	
-	#@bot.message_handler(commands=['who']) 
-	#def command_libre(m): 
-	#    who = commands.getoutput('who')
-	#    cid = m.chat.id 
-	#    bot.send_message( cid, who) 
+	@bot.message_handler(commands=['who']) 
+	def command_libre(m): 
+	    who = commands.getoutput('who')
+	    cid = m.chat.id 
+	    bot.send_message( cid, who) 
 	    
-	#@bot.message_handler(commands=['apagar']) 
+	#@bot.message_handler(commands=['shutdown']) 
 	#def command_apagar(m): 
 	#    apagar = commands.getoutput('poweroff')
 	#    cid = m.chat.id 
 	#    bot.send_message( cid, apagar) 
 	    
-	#@bot.message_handler(commands=['reiniciar']) 
+	#@bot.message_handler(commands=['reboot']) 
 	#def command_reboot(m): 
 	#    reiniciar = commands.getoutput('reboot')
 	#    cid = m.chat.id 
@@ -86,9 +87,7 @@ if  usuario:
 @bot.message_handler(commands=['id']) 
 def command_id(m): 
 	cid = m.chat.id 
-	bot.send_message(cid, cid)
-		
-		
+	bot.send_message(cid, cid)		
 
 #############################################
 #Peticiones
