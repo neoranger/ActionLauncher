@@ -53,13 +53,13 @@ def command_tiempo(m):
 	
 @bot.message_handler(commands=['free']) 
 def command_libre(m): 
-	libre = commands.getoutput('free -m')
-	send_message_checking_permission(m, libre)
+    libre = commands.getoutput('free -m')
+    send_message_checking_permission(m, libre)
 
 @bot.message_handler(commands=['info']) 
 def command_libre(m): 
-	screenfetch = commands.getoutput('screenfetch -n')
-	send_message_checking_permission(m, screenfetch)
+    screenfetch = commands.getoutput('screenfetch -n')
+    send_message_checking_permission(m, screenfetch)
 
 @bot.message_handler(commands=['who']) 
 def command_libre(m): 
@@ -78,16 +78,16 @@ def command_libre(m):
 	
 @bot.message_handler(commands=['id']) 
 def command_id(m): 
-	cid = m.chat.id 
-	bot.send_message(cid, cid)		
+    cid = m.chat.id 
+    bot.send_message(cid, cid)		
 
 def send_message_checking_permission(message, response):
-	cid = m.chat.id
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message(cid, "You can't use the bot")
-		return
-	bot.send_message(cid, response)
+    cid = m.chat.id
+    uid = m.from_user.id
+    if uid != user.user_id:
+        bot.send_message(cid, "You can't use the bot")
+        return
+    bot.send_message(cid, response)
 
 #############################################
 #Peticiones
