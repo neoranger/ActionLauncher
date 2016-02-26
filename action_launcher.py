@@ -16,120 +16,78 @@ import commands
 
 TOKEN =  token.token_id
 
-bot = telebot.TeleBot(TOKEN) # Creamos el objeto de nuestro bot.
+bot = telebot.TeleBot(TOKEN) # Creating our bot object.
 #############################################
 #Listener
 def listener(messages):
-	for m in messages: 
-		cid = m.chat.id 
-		if m.content_type == 'text':
-			print ("[" + str(cid) + "]: " + m.text)
+    for m in messages: 
+        cid = m.chat.id 
+	if m.content_type == 'text':
+	    print ("[" + str(cid) + "]: " + m.text)
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
 
 @bot.message_handler(commands=['test']) 
 def command_test(m):
-	cid = m.chat.id
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return
-	bot.send_message( cid, "This is a test")
+    send_message_checking_permission(m, "This is a test")
 
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m): 
-	cid = m.chat.id 
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return	
-	bot.send_message( cid, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
+    send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
-	temp = commands.getoutput('sudo /opt/vc/bin/vcgencmd/ measure_temp')
-	cid = m.chat.id
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return
-	bot.send_message( cid, temp)
-
+    temp = commands.getoutput('sudo /opt/vc/bin/vcgencmd/ measure_temp')
+    send_message_checking_permission(m, temp)
+    
 @bot.message_handler(commands=['df']) 
 def command_espacio(m): 
-	info = commands.getoutput('df -h')
-	cid = m.chat.id 
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return	
-	bot.send_message( cid, info)
+    info = commands.getoutput('df -h')
+    send_message_checking_permission(m, info)
 
 @bot.message_handler(commands=['uptime']) 
-def command_tiempo(m): 
-	tiempo = commands.getoutput('uptime')
-	cid = m.chat.id
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return
-	bot.send_message( cid, tiempo)
-
+def command_tiempo(m):
+    tiempo = commands.getoutput('uptime')
+    send_message_checking_permission(m, tiempo)
+	
 @bot.message_handler(commands=['free']) 
 def command_libre(m): 
-	libre = commands.getoutput('free -m')
-	cid = m.chat.id 
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return	
-	bot.send_message( cid, libre)
+    libre = commands.getoutput('free -m')
+    send_message_checking_permission(m, libre)
 
 @bot.message_handler(commands=['info']) 
 def command_libre(m): 
-	screenfetch = commands.getoutput('screenfetch -n')
-	cid = m.chat.id 
-	uid = m.from_user.id
-	if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return	
-	bot.send_message( cid, screenfetch) 
+    screenfetch = commands.getoutput('screenfetch -n')
+    send_message_checking_permission(m, screenfetch)
 
 @bot.message_handler(commands=['who']) 
 def command_libre(m): 
     who = commands.getoutput('who')
-    cid = m.chat.id 
-    uid = m.from_user.id
-    if uid != user.user_id:
-		bot.send_message( cid, "You can't use the bot")
-		return    
-    bot.send_message( cid, who) 
+    send_message_checking_permission(m, who)
     
 #@bot.message_handler(commands=['shutdown']) 
 #def command_apagar(m): 
-#    apagar = commands.getoutput('poweroff')
-#    cid = m.chat.id 
-	#uid = m.from_user.id
-	#if uid != user.user_id:
-		#bot.send_message( cid, "You can't use the bot")
-		#return
-#    bot.send_message( cid, apagar) 
+#    shutdown = commands.getoutput('poweroff')
+#    send_message_checking_permission(m, shutdown)
     
 #@bot.message_handler(commands=['reboot']) 
 #def command_reboot(m): 
-#    reiniciar = commands.getoutput('reboot')
-#    cid = m.chat.id 
-	#uid = m.from_user.id
-	#if uid != user.user_id:
-		#bot.send_message( cid, "You can't use the bot")
-		#return
-#    bot.send_message( cid, reiniciar)
+#    reboot = commands.getoutput('reboot')
+#    send_message_checking_permission(m, reboot)
 	
 @bot.message_handler(commands=['id']) 
 def command_id(m): 
-	cid = m.chat.id 
-	bot.send_message(cid, cid)		
+    cid = m.chat.id 
+    bot.send_message(cid, cid)		
+
+def send_message_checking_permission(message, response):
+    cid = m.chat.id
+    uid = m.from_user.id
+    if uid != user.user_id:
+        bot.send_message(cid, "You can't use the bot")
+        return
+    bot.send_message(cid, response)
 
 #############################################
 #Peticiones
