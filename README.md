@@ -6,6 +6,8 @@ Requirements:
 token.py file with the TOKEN ID that Telegram provides.
 user.py file with the user id Telegram for bot security.
 
+If you want, you can use the runbot.sh file for run the bot in the startup system. Just add the .sh file in your system settings.
+
 ########################################
 This bot was make for execute in a RaspberryPi, for that reason, some
 commands may not work in other systems.
