@@ -77,6 +77,21 @@ def command_reboot(m):
 	reboot = commands.getoutput('reboot')
 	send_message_checking_permission(m, reboot)
 	
+@bot.message_handler(commands=['repoup']) 
+def command_reboot(m):
+	repoup = commands.getoutput('sudo aptitude update')
+	send_message_checking_permission(m, repoup)
+	
+@bot.message_handler(commands=['sysup']) 
+def command_reboot(m):
+	sysup = commands.getoutput('sudo aptitude upgrade')
+	send_message_checking_permission(m, sysup)
+	
+@bot.message_handler(commands=['distup']) 
+def command_reboot(m):
+	distup = commands.getoutput('sudo aptitude dist-upgrade')
+	send_message_checking_permission(m, distup)
+	
 @bot.message_handler(commands=['id']) 
 def command_id(m): 
     cid = m.chat.id 
