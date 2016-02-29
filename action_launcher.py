@@ -17,6 +17,7 @@ import commands
 TOKEN =  token.token_id
 
 bot = telebot.TeleBot(TOKEN) # Creating our bot object.
+bot.skip_pending=True # Skip the pending messages
 #############################################
 #Listener
 def listener(messages):
@@ -71,10 +72,10 @@ def command_shutdown(m):
 	shutdown = commands.getoutput('poweroff')
 	send_message_checking_permission(m, shutdown)
     
-#@bot.message_handler(commands=['reboot']) 
-#def command_reboot(m):
-#	reboot = commands.getoutput('reboot')
-#	send_message_checking_permission(m, reboot)
+@bot.message_handler(commands=['reboot']) 
+def command_reboot(m):
+	reboot = commands.getoutput('reboot')
+	send_message_checking_permission(m, reboot)
 	
 @bot.message_handler(commands=['id']) 
 def command_id(m): 
