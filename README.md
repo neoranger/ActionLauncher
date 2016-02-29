@@ -13,3 +13,5 @@ commands may not work in other systems.
 
 If you have any doubt you can send an email to:
 neoranger@openmailbox.org
+
+Thanks to Zagur of portalinux.es and rawBasic
