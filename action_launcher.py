@@ -1,6 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
 # Action Launcher Bot: This is a bot how can shoots differents action depends commands
-# Code wrote by Zagur of PortalLinux.es and modified for NeoRanger of neositelinux.com.ar
+# Code wrote by Zagur of PortalLinux.es and modified by NeoRanger of neositelinux.com.ar
 # For a good use of the bot please read the README file
 
 import telebot 
@@ -20,10 +20,10 @@ bot = telebot.TeleBot(TOKEN) # Creating our bot object.
 #############################################
 #Listener
 def listener(messages):
-    for m in messages: 
-        cid = m.chat.id 
+	for m in messages:
+		cid = m.chat.id
 	if m.content_type == 'text':
-	    print ("[" + str(cid) + "]: " + m.text)
+		print ("[" + str(cid) + "]: " + m.text)
 bot.set_update_listener(listener) #  
 #############################################
 #Funciones
@@ -33,8 +33,8 @@ def command_test(m):
     send_message_checking_permission(m, "This is a test")
 
 @bot.message_handler(commands=['help']) 
-def command_ayuda(m): 
-    send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
+def command_ayuda(m):
+	send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
@@ -67,7 +67,7 @@ def command_libre(m):
     send_message_checking_permission(m, who)
     
 #@bot.message_handler(commands=['shutdown']) 
-#def command_apagar(m): 
+#def command_shutdown(m): 
 #    shutdown = commands.getoutput('poweroff')
 #    send_message_checking_permission(m, shutdown)
     
@@ -81,7 +81,7 @@ def command_id(m):
     cid = m.chat.id 
     bot.send_message(cid, cid)		
 
-def send_message_checking_permission(message, response):
+def send_message_checking_permission(m, response):
     cid = m.chat.id
     uid = m.from_user.id
     if uid != user.user_id:
