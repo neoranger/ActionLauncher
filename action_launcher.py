@@ -35,7 +35,7 @@ def command_test(m):
 
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
-	send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /shutdown /reboot")
+	send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /repoup /sysup /distup /shutdown /reboot")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
