@@ -58,12 +58,12 @@ def command_libre(m):
     send_message_checking_permission(m, libre)
 
 @bot.message_handler(commands=['info']) 
-def command_libre(m): 
+def command_info(m): 
     screenfetch = commands.getoutput('screenfetch -n')
     send_message_checking_permission(m, screenfetch)
 
 @bot.message_handler(commands=['who']) 
-def command_libre(m): 
+def command_who(m): 
     who = commands.getoutput('who')
     send_message_checking_permission(m, who)
     
@@ -78,17 +78,17 @@ def command_reboot(m):
 	send_message_checking_permission(m, reboot)
 	
 @bot.message_handler(commands=['repoup']) 
-def command_reboot(m):
+def command_repoup(m):
 	repoup = commands.getoutput('sudo aptitude update')
 	send_message_checking_permission(m, repoup)
 	
 @bot.message_handler(commands=['sysup']) 
-def command_reboot(m):
+def command_sysup(m):
 	sysup = commands.getoutput('sudo aptitude upgrade')
 	send_message_checking_permission(m, sysup)
 	
 @bot.message_handler(commands=['distup']) 
-def command_reboot(m):
+def command_distup(m):
 	distup = commands.getoutput('sudo aptitude dist-upgrade')
 	send_message_checking_permission(m, distup)
 	
