@@ -29,13 +29,15 @@ bot.set_update_listener(listener) #
 #############################################
 #Funciones
 
-@bot.message_handler(commands=['test']) 
+@bot.message_handler(commands=['ping']) 
 def command_test(m):
-    send_message_checking_permission(m, "This is a test")
+    cid = m.chat.id
+    bot.send_message(cid, "Pong")
 
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
-	send_message_checking_permission(m, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /repoup /sysup /distup /shutdown /reboot")
+    cid = m.chat.id
+    bot.send_message(cid, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /repoup /sysup /distup /shutdown /reboot")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
