@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # Action Launcher Bot: This is a bot how can shoots differents action depends commands
 # Code wrote by Zagur of PortalLinux.es and modified by NeoRanger of neositelinux.com.ar
 # For a good use of the bot please read the README file
@@ -37,7 +37,7 @@ def command_test(m):
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /temp /free /df /uptime /info /who /repoup /sysup /distup /shutdown /reboot")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp /free /df /uptime /info /who /repoup /sysup /distup /shutdown /reboot")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
