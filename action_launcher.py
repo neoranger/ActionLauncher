@@ -108,7 +108,7 @@ def command_ayuda(m):
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
-    temp = commands.getoutput('sudo /opt/vc/bin/vcgencmd/ measure_temp')
+    temp = commands.getoutput('sudo vcgencmd measure_temp')
     send_message_checking_permission(m, temp)
     
 @bot.message_handler(commands=['df']) 
@@ -148,17 +148,17 @@ def command_reboot(m):
 	
 @bot.message_handler(commands=['repoup']) 
 def command_repoup(m):
-	repoup = commands.getoutput('sudo aptitude update')
+	repoup = commands.getoutput('sudo apt-get update')
 	send_message_checking_permission(m, repoup)
 	
 @bot.message_handler(commands=['sysup']) 
 def command_sysup(m):
-	sysup = commands.getoutput('sudo aptitude upgrade')
+	sysup = commands.getoutput('sudo apt-get upgrade')
 	send_message_checking_permission(m, sysup)
 	
 @bot.message_handler(commands=['distup']) 
 def command_distup(m):
-	distup = commands.getoutput('sudo aptitude dist-upgrade')
+	distup = commands.getoutput('sudo apt-get dist-upgrade')
 	send_message_checking_permission(m, distup)
 	
 @bot.message_handler(commands=['id']) 

@@ -1,9 +1,14 @@
 #!/bin/bash
-
-########################################################################
-You can edit the path to select the correct .py file for run the script
-########################################################################
-
-DIR=/home/$USER/Documents/git/ActionLauncher/
-cd $DIR
+while true
+do
 python2 action_launcher.py
+echo "¡The bot is crashed!"
+echo "Rebooting in:"
+for i in 1
+do
+echo "$i..."
+done
+echo "###########################################"
+echo "#Bot is restarting now                    #"
+echo "###########################################"
+done
