@@ -14,19 +14,12 @@ import os
 import subprocess
 import commands
 import sys
-import json
 from os.path import exists
 import StringIO
 
-
-triggers = {}
-tfile = "triggers.json"
-ignored = []
-separator = '/'
 #user = [line.rstrip('\n') for line in open('user.txt','rt')]
 
 TOKEN =  token.token_id
-
 bot = telebot.TeleBot(TOKEN) # Creating our bot object.
 bot.skip_pending=True # Skip the pending messages
 #############################################
@@ -126,4 +119,5 @@ def send_message_checking_permission(m, response):
     
 #############################################
 #Peticiones
+print ("Bot Started")
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algun fallo.
