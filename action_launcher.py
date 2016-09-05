@@ -41,7 +41,7 @@ def command_test(m):
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin)")
 
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
@@ -109,6 +109,29 @@ def command_id(m):
     cid = m.chat.id 
     bot.send_message(cid, cid)		
 
+#@bot.message_handler(commands=['apache']) 
+#def command_test(m):
+#    cid = m.chat.id
+#    bot.send_document(cid, '/home/ubuntu/apache2.conf','rb')
+
+@bot.message_handler(commands=['start_nginx']) 
+def command_start_nginx(m):
+	nginx_start = commands.getoutput('sudo service start nginx')
+	send_message_checking_permission(m, nginx_start)
+
+@bot.message_handler(commands=['stop_nginx']) 
+def command_stop_nginx(m):
+	nginx_stop = commands.getoutput('sudo service stop nginx')
+	send_message_checking_permission(m, nginx_stop)
+
+@bot.message_handler(commands=['restart_nginx']) 
+def command_restart_nginx(m):
+	nginx_restart = commands.getoutput('sudo service restart nginx')
+	send_message_checking_permission(m, nginx_restart)
+
+##################################################################
+# FUNCION PARA CHEQUEAR PERMISOS A LA HORA DE EJECUTAR COMANDOS  #
+##################################################################
 def send_message_checking_permission(m, response):
     cid = m.chat.id
     uid = m.from_user.id
