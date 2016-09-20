@@ -116,17 +116,17 @@ def command_id(m):
 
 @bot.message_handler(commands=['start_nginx']) 
 def command_start_nginx(m):
-	nginx_start = commands.getoutput('sudo service start nginx')
+	nginx_start = commands.getoutput('sudo service nginx start')
 	send_message_checking_permission(m, nginx_start)
 
 @bot.message_handler(commands=['stop_nginx']) 
 def command_stop_nginx(m):
-	nginx_stop = commands.getoutput('sudo service stop nginx')
+	nginx_stop = commands.getoutput('sudo service nginx stop')
 	send_message_checking_permission(m, nginx_stop)
 
 @bot.message_handler(commands=['restart_nginx']) 
 def command_restart_nginx(m):
-	nginx_restart = commands.getoutput('sudo service restart nginx')
+	nginx_restart = commands.getoutput('sudo service nginx restart')
 	send_message_checking_permission(m, nginx_restart)
 
 ##################################################################
