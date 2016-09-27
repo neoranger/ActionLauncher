@@ -129,6 +129,11 @@ def command_restart_nginx(m):
 	nginx_restart = commands.getoutput('sudo service nginx restart')
 	send_message_checking_permission(m, nginx_restart)
 
+@bot.message_handler(commands=['bot_update']) 
+def command_bot_update(m): 
+    git_pull = commands.getoutput('git pull')
+    send_message_checking_permission(m, git_pull)
+
 ##################################################################
 # FUNCION PARA CHEQUEAR PERMISOS A LA HORA DE EJECUTAR COMANDOS  #
 ##################################################################
