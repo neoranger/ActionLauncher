@@ -38,62 +38,62 @@ bot.set_update_listener(listener) #
 @bot.message_handler(commands=['temp']) 
 def command_temp(m): 
     temp = commands.getoutput('sudo vcgencmd measure_temp')
-    send_message_checking_permission(m, '```' + temp + '```')
+    send_message_checking_permission(m, temp)
     
 @bot.message_handler(commands=['df']) 
 def command_espacio(m): 
     info = commands.getoutput('df -h')
-    send_message_checking_permission(m, '```' + info + '```')
+    send_message_checking_permission(m, info)
 
 @bot.message_handler(commands=['uptime']) 
 def command_tiempo(m):
     tiempo = commands.getoutput('uptime')
-    send_message_checking_permission(m, '```' + tiempo + '```')
+    send_message_checking_permission(m, tiempo)
 	
 @bot.message_handler(commands=['free']) 
 def command_libre(m): 
     libre = commands.getoutput('free -m')
-    send_message_checking_permission(m, '```' + libre + '```')
+    send_message_checking_permission(m, libre)
 
 @bot.message_handler(commands=['info']) 
 def command_info(m): 
     screenfetch = commands.getoutput('screenfetch -n')
-    send_message_checking_permission(m, '```' + screenfetch + '```')
+    send_message_checking_permission(m, screenfetch)
 
 @bot.message_handler(commands=['who']) 
 def command_who(m): 
     who = commands.getoutput('who')
-    send_message_checking_permission(m, '```' + who + '```')
+    send_message_checking_permission(m, who)
     
 @bot.message_handler(commands=['shutdown']) 
 def command_shutdown(m):
 	shutdown = commands.getoutput('poweroff')
-	send_message_checking_permission(m, '```' + shutdown + '```')
+	send_message_checking_permission(m, shutdown)
     
 @bot.message_handler(commands=['reboot']) 
 def command_reboot(m):
 	reboot = commands.getoutput('reboot')
-	send_message_checking_permission(m, '```' + reboot + '```')
+	send_message_checking_permission(m, reboot)
 	
 @bot.message_handler(commands=['repoup']) 
 def command_repoup(m):
 	repoup = commands.getoutput('sudo apt-get update')
-	send_message_checking_permission(m, '```' + repoup + '```')
+	send_message_checking_permission(m, repoup)
 	
 @bot.message_handler(commands=['sysup']) 
 def command_sysup(m):
 	sysup = commands.getoutput('sudo apt-get upgrade')
-	send_message_checking_permission(m, '```' + sysup + '```')
+	send_message_checking_permission(m, sysup)
 	
 @bot.message_handler(commands=['distup']) 
 def command_distup(m):
 	distup = commands.getoutput('sudo apt-get dist-upgrade')
-	send_message_checking_permission(m, '```' + distup + '```')
+	send_message_checking_permission(m, distup)
 
 @bot.message_handler(commands=['osversion']) 
 def command_osversion(m):
     osversion = commands.getoutput('lsb_release -a')
-    send_message_checking_permission(m, '```' + osversion + '```')
+    send_message_checking_permission(m, osversion)
 #Otra forma: osversion = commands.getoutput('cat /etc/os-release')
 	
 ##################################################################
