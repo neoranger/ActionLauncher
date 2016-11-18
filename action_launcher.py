@@ -157,5 +157,5 @@ def send_message_checking_permission(m, response):
 #PETICIONES                                                      #
 ##################################################################
 print ("Bot Started")
-print ("Thanks for using NeoBot. Please visit us: https://www.neositelinux.com")
+print ("Thanks for using ActionLauncherBot. Please visit us: https://www.neositelinux.com")
 bot.polling(none_stop=True) # Con esto, le decimos al bot que siga funcionando incluso si encuentra algun fallo.
