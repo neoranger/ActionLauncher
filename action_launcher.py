@@ -67,12 +67,12 @@ def command_who(m):
     
 @bot.message_handler(commands=['shutdown']) 
 def command_shutdown(m):
-	shutdown = commands.getoutput('poweroff')
+	shutdown = commands.getoutput('sudo poweroff')
 	send_message_checking_permission(m, shutdown)
     
 @bot.message_handler(commands=['reboot']) 
 def command_reboot(m):
-	reboot = commands.getoutput('reboot')
+	reboot = commands.getoutput('sudo reboot')
 	send_message_checking_permission(m, reboot)
 	
 @bot.message_handler(commands=['repoup']) 
