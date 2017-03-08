@@ -95,6 +95,11 @@ def command_osversion(m):
     osversion = commands.getoutput('lsb_release -a')
     send_message_checking_permission(m, osversion)
 #Otra forma: osversion = commands.getoutput('cat /etc/os-release')
+
+@bot.message_handler(commands=['screens'])
+def command_screens(m):
+        screens = commands.getoutput('screen -ls')
+        send_message_checking_permission(m, screens)
 	
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
