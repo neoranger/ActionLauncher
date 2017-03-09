@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Action Launcher Bot: This is a bot how can shoots differents action depends commands
+# Action Launcher Bot: This is a bot how can execute differents actions depends commands
 # Code wrote by Zagur of PortalLinux.es and modified by NeoRanger of neositelinux.com
 # For a good use of the bot please read the README file
 
@@ -98,7 +98,7 @@ def command_osversion(m):
 
 @bot.message_handler(commands=['screens'])
 def command_screens(m):
-        screens = commands.getoutput('screen -ls')
+        screens = commands.getoutput('screen -ls | grep "pi" ')
         send_message_checking_permission(m, screens)
 	
 ##################################################################
@@ -117,7 +117,7 @@ def command_test(m):
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /screens(admin)")
 
 #@bot.message_handler(commands=['apache']) 
 #def command_test(m):
