@@ -100,6 +100,11 @@ def command_osversion(m):
 def command_screens(m):
         screens = commands.getoutput('screen -ls | grep "pi" ')
         send_message_checking_permission(m, screens)
+
+@bot.message_handler(commands=['weather']) 
+def command_weather(m):
+	weather = commands.getoutput('inxi -w')
+	send_message_checking_permission(m, weather)
 	
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
@@ -117,7 +122,7 @@ def command_test(m):
 @bot.message_handler(commands=['help']) 
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /screens(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /screens(admin) /weather(admin)")
 
 #@bot.message_handler(commands=['apache']) 
 #def command_test(m):
