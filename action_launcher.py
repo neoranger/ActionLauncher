@@ -30,67 +30,67 @@ def listener(messages):
 		cid = m.chat.id
 	if m.content_type == 'text':
 		print ("[" + str(cid) + "]: " + m.text)
-bot.set_update_listener(listener) #  
+bot.set_update_listener(listener) #
 ##################################################################
 #FUNCIONES PRINCIPALES DEL BOT (CON SEGURIDAD)                   #
 ##################################################################
 
-@bot.message_handler(commands=['temp']) 
-def command_temp(m): 
+@bot.message_handler(commands=['temp'])
+def command_temp(m):
     temp = commands.getoutput('sudo vcgencmd measure_temp')
     send_message_checking_permission(m, temp)
-    
-@bot.message_handler(commands=['df']) 
-def command_espacio(m): 
+
+@bot.message_handler(commands=['df'])
+def command_espacio(m):
     info = commands.getoutput('df -h')
     send_message_checking_permission(m, info)
 
-@bot.message_handler(commands=['uptime']) 
+@bot.message_handler(commands=['uptime'])
 def command_tiempo(m):
     tiempo = commands.getoutput('uptime')
     send_message_checking_permission(m, tiempo)
-	
-@bot.message_handler(commands=['free']) 
-def command_libre(m): 
+
+@bot.message_handler(commands=['free'])
+def command_libre(m):
     libre = commands.getoutput('free -m')
     send_message_checking_permission(m, libre)
 
-@bot.message_handler(commands=['info']) 
-def command_info(m): 
+@bot.message_handler(commands=['info'])
+def command_info(m):
     screenfetch = commands.getoutput('screenfetch -n')
     send_message_checking_permission(m, screenfetch)
 
-@bot.message_handler(commands=['who']) 
-def command_who(m): 
+@bot.message_handler(commands=['who'])
+def command_who(m):
     who = commands.getoutput('who')
     send_message_checking_permission(m, who)
-    
-@bot.message_handler(commands=['shutdown']) 
+
+@bot.message_handler(commands=['shutdown'])
 def command_shutdown(m):
 	shutdown = commands.getoutput('sudo poweroff')
 	send_message_checking_permission(m, shutdown)
-    
-@bot.message_handler(commands=['reboot']) 
+
+@bot.message_handler(commands=['reboot'])
 def command_reboot(m):
 	reboot = commands.getoutput('sudo reboot')
-	send_message_checking_permission(m, reboot)
-	
-@bot.message_handler(commands=['repoup']) 
+	send_message_checking_permission(m, rebooot)
+
+@bot.message_handler(commands=['repoup'])
 def command_repoup(m):
 	repoup = commands.getoutput('sudo apt-get update')
 	send_message_checking_permission(m, repoup)
-	
-@bot.message_handler(commands=['sysup']) 
+
+@bot.message_handler(commands=['sysup'])
 def command_sysup(m):
 	sysup = commands.getoutput('sudo apt-get upgrade')
 	send_message_checking_permission(m, sysup)
-	
-@bot.message_handler(commands=['distup']) 
+
+@bot.message_handler(commands=['distup'])
 def command_distup(m):
 	distup = commands.getoutput('sudo apt-get dist-upgrade')
 	send_message_checking_permission(m, distup)
 
-@bot.message_handler(commands=['osversion']) 
+@bot.message_handler(commands=['osversion'])
 def command_osversion(m):
     osversion = commands.getoutput('lsb_release -a')
     send_message_checking_permission(m, osversion)
@@ -101,30 +101,30 @@ def command_screens(m):
         screens = commands.getoutput('screen -ls | grep "pi" ')
         send_message_checking_permission(m, screens)
 
-@bot.message_handler(commands=['weather']) 
+@bot.message_handler(commands=['weather'])
 def command_weather(m):
 	weather = commands.getoutput('inxi -w')
 	send_message_checking_permission(m, weather)
-	
+
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
 ##################################################################
-@bot.message_handler(commands=['id']) 
-def command_id(m): 
-    cid = m.chat.id 
-    bot.send_message(cid, cid)		
+@bot.message_handler(commands=['id'])
+def command_id(m):
+    cid = m.chat.id
+    bot.send_message(cid, cid)
 
-@bot.message_handler(commands=['ping']) 
+@bot.message_handler(commands=['ping'])
 def command_test(m):
     cid = m.chat.id
     bot.send_message(cid, "Pong")
 
-@bot.message_handler(commands=['help']) 
+@bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
     bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /screens(admin) /weather(admin)")
 
-#@bot.message_handler(commands=['apache']) 
+#@bot.message_handler(commands=['apache'])
 #def command_test(m):
 #    cid = m.chat.id
 #    bot.send_document(cid, '/home/ubuntu/apache2.conf','rb')
@@ -132,23 +132,23 @@ def command_ayuda(m):
 ##################################################################
 #MANEJO DEL SERVIDOR NGINX Y UPDATE DEL BOT VIA GIT              #
 ##################################################################
-@bot.message_handler(commands=['start_nginx']) 
+@bot.message_handler(commands=['start_nginx'])
 def command_start_nginx(m):
 	nginx_start = commands.getoutput('sudo service nginx start')
 	send_message_checking_permission(m, nginx_start)
 
-@bot.message_handler(commands=['stop_nginx']) 
+@bot.message_handler(commands=['stop_nginx'])
 def command_stop_nginx(m):
 	nginx_stop = commands.getoutput('sudo service nginx stop')
 	send_message_checking_permission(m, nginx_stop)
 
-@bot.message_handler(commands=['restart_nginx']) 
+@bot.message_handler(commands=['restart_nginx'])
 def command_restart_nginx(m):
 	nginx_restart = commands.getoutput('sudo service nginx restart')
 	send_message_checking_permission(m, nginx_restart)
 
-@bot.message_handler(commands=['bot_update']) 
-def command_bot_update(m): 
+@bot.message_handler(commands=['bot_update'])
+def command_bot_update(m):
     git_pull = commands.getoutput('git pull')
     send_message_checking_permission(m, git_pull)
 
@@ -162,7 +162,7 @@ def send_message_checking_permission(m, response):
         bot.send_message(cid, "You can't use the bot")
         return
     bot.send_message(cid, response)
-    
+
 ##################################################################
 #PETICIONES                                                      #
 ##################################################################
