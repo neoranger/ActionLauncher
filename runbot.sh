@@ -1,7 +1,7 @@
 #!/bin/bash
 while true
 do
-python2 action_launcher.py
+python2 /home/pi/Documents/git/ActionLauncher/action_launcher.py
 echo "¡The bot is crashed!"
 echo "Rebooting in:"
 for i in 1
