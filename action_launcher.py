@@ -82,12 +82,12 @@ def command_repoup(m):
 
 @bot.message_handler(commands=['sysup'])
 def command_sysup(m):
-	sysup = commands.getoutput('sudo apt-get upgrade')
+	sysup = commands.getoutput('yes | sudo apt-get upgrade')
 	send_message_checking_permission(m, sysup)
 
 @bot.message_handler(commands=['distup'])
 def command_distup(m):
-	distup = commands.getoutput('sudo apt-get dist-upgrade | Y ')
+	distup = commands.getoutput('yes | sudo apt-get dist-upgrade')
 	send_message_checking_permission(m, distup)
 
 @bot.message_handler(commands=['osversion'])
