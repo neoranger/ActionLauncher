@@ -58,7 +58,7 @@ def command_libre(m):
 @bot.message_handler(commands=['info'])
 def command_info(m):
     screenfetch = commands.getoutput('screenfetch -n')
-    send_message_checking_permission(m, screenfetch)
+    send_message_checking_permission(m, u(screenfetch))
 
 @bot.message_handler(commands=['who'])
 def command_who(m):
@@ -87,7 +87,7 @@ def command_sysup(m):
 
 @bot.message_handler(commands=['distup'])
 def command_distup(m):
-	distup = commands.getoutput('sudo apt-get dist-upgrade')
+	distup = commands.getoutput('sudo apt-get dist-upgrade | Y ')
 	send_message_checking_permission(m, distup)
 
 @bot.message_handler(commands=['osversion'])
