@@ -155,13 +155,26 @@ def command_bot_update(m):
 ##################################################################
 # FUNCION PARA CHEQUEAR PERMISOS A LA HORA DE EJECUTAR COMANDOS  #
 ##################################################################
+#def send_message_checking_permission(m, response):
+#    cid = m.chat.id
+#    uid = m.from_user.id
+#    if uid != user.user_id:
+#        bot.send_message(cid, "You can't use the bot")
+#        return
+#    bot.send_message(cid, response)
+
 def send_message_checking_permission(m, response):
-    cid = m.chat.id
-    uid = m.from_user.id
-    if uid != user.user_id:
-        bot.send_message(cid, "You can't use the bot")
+    try:
+        cid = m.chat.id
+        uid = m.from_user.id
+        if uid != user.user_id:
+            bot.send_message(cid, "You can't use the bot")
         return
-    bot.send_message(cid, response)
+        bot.send_message(cid, response)
+
+    except Exception as e:
+        bot.reply_to(m, 'ops, hubo un error')
+        bot.send_message(cid, str(e))
 
 ##################################################################
 #PETICIONES                                                      #
