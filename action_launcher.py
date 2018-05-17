@@ -122,7 +122,7 @@ def command_test(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /osversion(admin) /shutdown(admin) /reboot(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /screens(admin) /weather(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /screens(admin) /osversion(admin) /weather(admin) /nmap_all(admin) /nmap_active(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /shutdown(admin) /reboot(admin)")
 
 #@bot.message_handler(commands=['apache'])
 #def command_test(m):
@@ -151,6 +151,16 @@ def command_restart_nginx(m):
 def command_bot_update(m):
     git_pull = commands.getoutput('git pull')
     send_message_checking_permission(m, git_pull)
+
+@bot.message_handler(commands=['nmap_all'])
+def command_nmap_all(m):
+        nmap_all = commands.getoutput('sudo nast -m -i eth0')
+        send_message_checking_permission(m, nmap_all)
+
+@bot.message_handler(commands=['nmap_active'])
+def command_nmap_active(m):
+        nmap_active = commands.getoutput('sudo nast -g -i eth0')
+        send_message_checking_permission(m, nmap_all)
 
 ##################################################################
 # FUNCION PARA CHEQUEAR PERMISOS A LA HORA DE EJECUTAR COMANDOS  #
