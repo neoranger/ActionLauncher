@@ -106,6 +106,16 @@ def command_weather(m):
 	weather = commands.getoutput('inxi -w')
 	send_message_checking_permission(m, weather)
 
+def extract_arg(arg):
+	return arg.split()[1:]
+
+@bot.message_handler(commands=['tv_on_off'])
+def command_tv_on_off(m):
+        status = extract_arg(m.text)
+        tv_on_off = commands.getoutput('sudo ./tv_on_off.sh'+status)
+#        tv_on_off = subprocess(["sudo ./tv_on_off", status])
+        send_message_checking_permission(m, tv_on_off)
+
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
 ##################################################################
