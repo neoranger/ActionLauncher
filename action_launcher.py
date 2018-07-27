@@ -73,7 +73,7 @@ def command_shutdown(m):
 @bot.message_handler(commands=['reboot'])
 def command_reboot(m):
 	reboot = commands.getoutput('sudo reboot')
-	send_message_checking_permission(m, rebooot)
+	send_message_checking_permission(m, reboot)
 
 @bot.message_handler(commands=['repoup'])
 def command_repoup(m):
@@ -181,7 +181,9 @@ def send_message_checking_permission(m, response):
     if uid != user.user_id:
         bot.send_message(cid, "You can't use the bot")
         return
-    bot.send_message(cid, response)
+    else:
+        bot.send_message(cid, "Trigger the action")
+        bot.send_message(cid, response)
 
 #def send_message_checking_permission(m, response):
 #    try:
