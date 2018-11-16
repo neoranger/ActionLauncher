@@ -16,6 +16,9 @@ import commands
 import sys
 from os.path import exists
 import StringIO
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 #user = [line.rstrip('\n') for line in open('user.txt','rt')]
 
@@ -25,11 +28,16 @@ bot.skip_pending=True # Skip the pending messages
 ##################################################################
 #LISTENER                                                        #
 ##################################################################
+def printUser(msg): #debug function (will print every message sent by any user to the console)
+        print str(msg.chat.first_name) + " [" + str(msg.chat.id) + "]: " + msg.text
+
 def listener(messages):
-	for m in messages:
-		cid = m.chat.id
-	if m.content_type == 'text':
-		print ("[" + str(cid) + "]: " + m.text)
+        for m in messages:
+                cid = m.chat.id
+                if m.content_type == 'text':
+                        text = m.text
+                        printUser(m) #print the sent message to the console
+
 bot.set_update_listener(listener) #
 ##################################################################
 #FUNCIONES PRINCIPALES DEL BOT (CON SEGURIDAD)                   #
@@ -42,7 +50,7 @@ def command_temp(m):
 
 @bot.message_handler(commands=['df'])
 def command_espacio(m):
-    info = commands.getoutput('df -h')
+    info = commands.getoutput('inxi -p')
     send_message_checking_permission(m, info)
 
 @bot.message_handler(commands=['uptime'])
@@ -67,7 +75,7 @@ def command_who(m):
 
 @bot.message_handler(commands=['shutdown'])
 def command_shutdown(m):
-	shutdown = commands.getoutput('sudo poweroff')
+	shutdown = commands.getoutput('sudo shutdown -h now')
 	send_message_checking_permission(m, shutdown)
 
 @bot.message_handler(commands=['reboot'])
