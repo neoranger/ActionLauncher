@@ -123,6 +123,17 @@ def command_tv_on_off(m):
         tv_on_off = commands.getoutput('sudo ./tv_on_off.sh'+status)
 #        tv_on_off = subprocess(["sudo ./tv_on_off", status])
         send_message_checking_permission(m, tv_on_off)
+		
+@bot.message_handler(commands=['ps_ram'])
+def command_ps_ram(m):
+	ps_ram = commands.getoutput('ps aux | awk '{print $2, $4, $11}' | sort -k2r | head -n 10')
+	send_message_checking_permission(m, ps_ram)
+	
+@bot.message_handler(commands=['ps_cpu'])
+def command_ps_cpu(m):
+	ps_cpu = commands.getoutput('ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6')
+	send_message_checking_permission(m, ps_cpu)
+
 
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
@@ -140,7 +151,7 @@ def command_test(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /screens(admin) /osversion(admin) /weather(admin) /nmap_all(admin) /nmap_active(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /shutdown(admin) /reboot(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /screens(admin) /osversion(admin) /weather(admin) /nmap_all(admin) /nmap_active(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /shutdown(admin) /reboot(admin) /ps_ram(admin) /ps_cpu(admin)")
 
 #@bot.message_handler(commands=['apache'])
 #def command_test(m):
@@ -190,7 +201,7 @@ def send_message_checking_permission(m, response):
         bot.send_message(cid, "You can't use the bot")
         return
     else:
-        bot.send_message(cid, "Trigger the action")
+        bot.send_message(cid, "Triggering...")
         bot.send_message(cid, response)
 
 #def send_message_checking_permission(m, response):
