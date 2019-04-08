@@ -126,7 +126,7 @@ def command_tv_on_off(m):
 		
 @bot.message_handler(commands=['ps_ram'])
 def command_ps_ram(m):
-	ps_ram = commands.getoutput('ps aux | awk '{print $2, $4, $11}' | sort -k2r | head -n 10')
+	ps_ram = commands.getoutput("ps aux | awk '{print $2, $4, $11}' | sort -k2r | head -n 10")
 	send_message_checking_permission(m, ps_ram)
 	
 @bot.message_handler(commands=['ps_cpu'])
@@ -134,6 +134,11 @@ def command_ps_cpu(m):
 	ps_cpu = commands.getoutput('ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6')
 	send_message_checking_permission(m, ps_cpu)
 
+
+@bot.message_handler(commands=['server_torrent_restart'])
+def command_torrent_res(m):
+    torrent_res = commands.getoutput('sudo service transmission-daemon restart')
+    send_message_checking_permission(m, torrent_res)
 
 ##################################################################
 #FUNCIONES SIN SEGURIDAD (SIMPLES)                               #
@@ -151,7 +156,7 @@ def command_test(m):
 @bot.message_handler(commands=['help'])
 def command_ayuda(m):
     cid = m.chat.id
-    bot.send_message(cid, "Comandos Disponibles: /help /ping /temp(admin) /free(admin) /df(admin) /uptime(admin) /info(admin) /who /repoup(admin) /sysup(admin) /distup(admin) /screens(admin) /osversion(admin) /weather(admin) /nmap_all(admin) /nmap_active(admin) /start_nginx(admin) /stop_nginx(admin) /restart_nginx(admin) /bot_update(admin) /shutdown(admin) /reboot(admin) /ps_ram(admin) /ps_cpu(admin)")
+    bot.send_message(cid, "Comandos Disponibles: /help\n /ping\n /temp(admin)\n /free(admin)\n /df(admin)\n /uptime(admin)\n /info(admin)\n /who\n /repoup(admin)\n /sysup(admin)\n /distup(admin)\n /screens(admin)\n /osversion(admin)\n /weather(admin)\n /nmap_all(admin)\n /nmap_active(admin)\n /start_nginx(admin)\n /stop_nginx(admin)\n /restart_nginx(admin)\n /bot_update(admin)\n /shutdown(admin)\n /reboot(admin)\n /ps_ram(admin)\n /ps_cpu(admin)\n")
 
 #@bot.message_handler(commands=['apache'])
 #def command_test(m):
