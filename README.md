@@ -16,6 +16,6 @@ If you want, you can use the runbot.sh file for run the bot in the startup syste
 
 
 If you have any doubt you can send an email to:
-neoranger@openmailbox.org
+neositeproducciones@gmail.com
 
 Thanks to Zagur of [portallinux.es](portallinux.es) and [@rawBasic](https://t.me/rawbasic "rawbasic")
