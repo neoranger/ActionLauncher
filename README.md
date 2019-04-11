@@ -1,4 +1,4 @@
-# This Bot it was migrated to [BaTBot](https://github.com/neoranger/BaTbot).
+# This Bot was migrated to [BaTBot](https://github.com/neoranger/BaTbot).
 
 # ActionLauncher
 ---
@@ -20,4 +20,4 @@ If you want, you can use the runbot.sh file for run the bot in the startup syste
 If you have any doubt you can send an email to:
 neositeproducciones@gmail.com
 
-Thanks to Zagur of [portallinux.es](portallinux.es) and [@rawBasic](https://t.me/rawbasic "rawbasic")
+Thanks to Zagur of [portallinux.es](http://www.portallinux.es) and [@rawBasic](https://t.me/rawbasic)
