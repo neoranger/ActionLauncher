@@ -1,3 +1,5 @@
+# This Bot it was migrated to [BaTBot](https://github.com/neoranger/BaTbot).
+
 # ActionLauncher
 ---
 Bot for Telegram. This bot can send commands to your Linux System for 
