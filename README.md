@@ -5,7 +5,7 @@
 Bot for Telegram. This bot can send commands to your Linux System for 
 obtain information remotely or check machine status.
 
-#Requirements:
+# Requirements:
 ---
 token.py (you have to rename token.py_test to token.py) file with the TOKEN ID that Telegram provides.
 ***
